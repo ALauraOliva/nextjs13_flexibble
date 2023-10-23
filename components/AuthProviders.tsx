@@ -17,7 +17,25 @@ type Providers = Record<string, Provider>;
 const AuthProviders = () => {
   const [providers, setProviders] = useState<Providers | null>(null);
 
-  return <div>AuthProviders</div>;
+  useEffect(() => {
+    const fetchProviders = async () => {
+      const res = await getProviders();
+
+      setProviders(res);
+    };
+
+    fetchProviders();
+  }, []);
+
+  if (providers) {
+    return (
+      <div>
+        {Object.values(providers).map((provider: Provider, index) => (
+          <button key={index}>{provider.id}</button>
+        ))}
+      </div>
+    );
+  }
 };
 
 export default AuthProviders;
