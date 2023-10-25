@@ -11,5 +11,25 @@ export const authOptions: NextAuthOptions = {
             clientId: '',
             clientSecret:''
         })
-    ]
+    ],
+    jwt: {
+        encode: ({secret, token}) => {
+
+        },
+        decode: async ({secret,token}) => {
+
+        }
+    },
+    theme:{
+        colorScheme: 'light',
+        logo: '/logo.png'
+    },
+    callbacks:{
+        async session({session}) {
+
+        },
+        async signIn({user}) {
+            
+        }
+    }
 }
